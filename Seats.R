@@ -12,7 +12,7 @@ place_random <- function(person) {
     return("No available seats")
   }
   chosen_seat <- sample(available_seats, 1)  # Randomly choose one of the available seats
-  seats[chosen_seat] <- person
+  seats[chosen_seat] <<- person
   return(paste("Person", person, "placed on seat", chosen_seat))
 }
 
@@ -27,7 +27,7 @@ place_on_seat <- function(person, seat_number) {
   if (!is.na(seats[seat_number])) {
     return(paste("Seat", seat_number, "is already taken by person", seats[seat_number]))
   }
-  seats[seat_number] <- person
+  seats[seat_number] <<- person
   return(paste("Person", person, "placed on seat", seat_number))
 }
 
@@ -43,9 +43,9 @@ find_person <- function(person) {
   return(paste("Person", person, "is seated on seat", seat_number))
 }
 
-# Example usage
-print(place_random(5))         # Place person 5 on a random seat
-print(place_on_seat(6, 10))    # Place person 6 on seat 10
-print(find_person(5))          # Find seat for person 5
-print(find_person(6))          # Find seat for person 6
-print(place_on_seat(7, 10))    # Attempt to place person 7 on seat 10, which is taken
+# # Example usage
+# print(place_random(5))         # Place person 5 on a random seat
+# print(place_on_seat(6, 10))    # Place person 6 on seat 10
+# print(find_person(5))          # Find seat for person 5
+# print(find_person(6))          # Find seat for person 6
+# print(place_on_seat(7, 10))    # Attempt to place person 7 on seat 10, which is taken
